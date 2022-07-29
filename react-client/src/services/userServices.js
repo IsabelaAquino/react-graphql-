@@ -12,3 +12,19 @@ export const GET_USER = gql`
     }
   }
 `
+export const CREATE_USER = gql`
+  createUser(
+    name: $name
+    email: $email
+    phone: $phone
+    password: $password
+    avatar: $avatar
+  ){
+    id,
+    name,
+    email,
+    phone,
+    password,
+    avatar
+  }
+`

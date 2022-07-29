@@ -1,18 +1,16 @@
 import { v4 as uuidv4 } from 'uuid';
 
 const Mutation = {
-    createUser({name, email, phone, password, avatar}, { db }){
+    createUser(parent, {name, email, phone, password, avatar}, { db }, info){
 
       const user = {
         id: uuidv4(),
-        name: name,
-        email: email,
-        phone: phone,
-        password: password,
-        avatar: avatar
+        name,
+        email,
+        phone,
+        password,
+        avatar
       }
-
-      console.log("user", user)
 
       db.users.push(user)
 
