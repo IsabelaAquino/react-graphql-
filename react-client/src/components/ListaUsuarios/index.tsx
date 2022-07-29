@@ -97,6 +97,7 @@ export default function ListaUsuarios() {
                 </Table>
             </TableContainer>
             <TablePagination
+                labelRowsPerPage="Usuários por página:"
                 rowsPerPageOptions={[10, 25, 100]}
                 component="div"
                 count={rows.length}
