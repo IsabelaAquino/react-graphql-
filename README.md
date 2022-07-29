@@ -13,3 +13,12 @@ If you wish to make your forked repository private, feel free to do so. <br />
 Just add `DaniloOliveira28` as a collaborator so we can review your challenge.
 
 Happy coding!
+
+IMPLEMENTAÇÃO:
+Foi adicionado uma lista de usuários dentro de um componente de tabela do material ui e um componente de 
+modal de cadastro de usuário, foi criado uma mutation que usa o método de push do javascript para inserir dados no array de objetos no arquivo de json db.js do projeto de back-end.
+
+Melhorias:
+- Melhorias na validação do formulário de adição de usuário 
+- Adição de máscara de telefone 
+- Implementar um contexto (Context - UseContext) para consumo dos dados de usuário de forma global

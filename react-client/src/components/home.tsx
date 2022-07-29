@@ -20,9 +20,14 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import UserIcon from '@mui/icons-material/AccountBox'
 import PeopleAlt from '@mui/icons-material/PeopleAlt'
+import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
 
 import './style.css'
 import ListaUsuarios from './ListaUsuarios';
+import AdicionarUsuario from './AdicionarUsuario';
+import ModalComponent from './modal';
+import { setTimeout } from 'timers/promises';
 
 const drawerWidth = 240;
 
@@ -79,6 +84,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function Home() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false)
+  const [exibeAlert, setExibeAlert] = useState(false)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -87,6 +94,15 @@ export default function Home() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  
+  function retornoAddUser(){
+    setExibeAlert(true)
+    setOpenModal(false)
+    let a: number;
+    a = window.setTimeout(function() {}, 1000);
+    
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -142,7 +158,29 @@ export default function Home() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
+        <Button color="primary" variant="contained" onClick={() => setOpenModal(!openModal)}
+        >Adicionar Usuário</Button>
+        {
+          exibeAlert ?
+          <>
+            <Alert severity="success">Usuário Adicionado!</Alert>
+            <br /><br />
+          </> : <></>
+        }
+        <br /><br />
         <ListaUsuarios />
+        {
+          openModal ?
+          <ModalComponent 
+            setOpen={setOpenModal}
+            title={"Novo Usuário"}
+            content={
+              <AdicionarUsuario fecharModal={() => {
+                retornoAddUser()
+              }} />
+            }
+          /> : <></>
+        }
       </Main>
     </Box>
   );

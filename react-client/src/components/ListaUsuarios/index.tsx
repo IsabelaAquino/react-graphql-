@@ -6,7 +6,7 @@ import {useQuery} from '@apollo/client'
 import { Usuarios } from '../UsuarioType';
 import { GET_USER } from '../../services/userServices'
 import { Avatar, ListItemAvatar } from '@mui/material';
-import FolderIcon from '@mui/icons-material/Folder';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -36,7 +36,7 @@ const columns: readonly Column[] = [
 export default function ListaUsuarios() {
   const {data, loading} = useQuery(GET_USER)
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -54,7 +54,7 @@ export default function ListaUsuarios() {
         </TableCell>
         <TableCell>
             <Avatar alt={"foto usuário"} src={user.avatar}>
-                <FolderIcon />
+                <AccountCircle />
             </Avatar>
         </TableCell>
         <TableCell>
@@ -75,8 +75,8 @@ export default function ListaUsuarios() {
 
   return (
     <>
-        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-            <TableContainer sx={{ maxHeight: 500 }}>
+        <Paper sx={{ width: '100%' }}>
+            <TableContainer sx={{ maxHeight: '100%' }}>
                 <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                     <TableRow>
@@ -98,7 +98,7 @@ export default function ListaUsuarios() {
             </TableContainer>
             <TablePagination
                 labelRowsPerPage="Usuários por página:"
-                rowsPerPageOptions={[10, 25, 100]}
+                rowsPerPageOptions={[5, 15, 25, 100]}
                 component="div"
                 count={rows.length}
                 rowsPerPage={rowsPerPage}

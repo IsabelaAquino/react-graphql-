@@ -11,20 +11,22 @@ export const GET_USER = gql`
       avatar
     }
   }
-`
+`;
 export const CREATE_USER = gql`
-  createUser(
-    name: $name
-    email: $email
-    phone: $phone
-    password: $password
-    avatar: $avatar
-  ){
-    id,
-    name,
-    email,
-    phone,
-    password,
-    avatar
+  mutation ($name: String! $email: String! $phone: String! $password: String! $avatar: String!){
+    createUser(
+      name: $name
+      email: $email
+      phone: $phone
+      password: $password
+      avatar: $avatar
+    ){
+      id,
+      name,
+      email,
+      phone,
+      password,
+      avatar
+    }
   }
 `
